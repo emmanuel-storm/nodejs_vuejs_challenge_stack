@@ -1,5 +1,6 @@
 const express = require('express');
 const recipes = require("./data/recipes.json");
+const ingredients = require('./data/ingredients.json');
 const app = express();
 const port = 3000; // Le port sur lequel votre serveur écoutera les requêtes
 
@@ -16,13 +17,11 @@ app.get('/', (req, res) => {
 
 app.get('/api/recipes', (req, res) => {
     // Lire les données depuis le fichier JSON
-    const recipes = require('./data/recipes.json');
     res.json(recipes);
 });
 
 app.get('/api/recipes/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const recipes = require('./data/recipes.json');
     const recipe = recipes.find((recipe) => recipe.id === id);
 
     if (recipe) {
@@ -33,8 +32,18 @@ app.get('/api/recipes/:id', (req, res) => {
 });
 
 app.get('/api/ingredients', (req, res) => {
-    const ingredients = require('./data/ingredients.json');
     res.json(ingredients);
+});
+
+app.get('/api/ingredients/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const ingredient = ingredients.find((ingredient) => ingredient.id === id);
+
+    if (ingredient) {
+        res.json(ingredient);
+    } else {
+        res.status(404).json({error: "Ingredient not found"});
+    }
 });
 
 // Exemple de route pour ajouter des données

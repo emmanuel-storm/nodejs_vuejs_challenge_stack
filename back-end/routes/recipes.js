@@ -8,6 +8,8 @@ router.get('/', recipesController.getAllRecipes)
 
 router.get('/:id', recipesController.getRecipe)
 
+router.get('/:id/analyse', recipesController.getRecipeAnalyse)
+
 router.post('/', recipesController.createRecipe)
 
 router.put('/:id', recipesController.updateRecipe)

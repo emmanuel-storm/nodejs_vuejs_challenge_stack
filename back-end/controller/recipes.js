@@ -75,3 +75,22 @@ exports.updateRecipe = (req, res) => {
         res.status(404).json({error: 'Recipe not found'});
     }
 }
+
+exports.deleteRecipe = (req, res) => {
+    const id = req.params.id;
+    const recipeIndex = recipes.findIndex((recipe) => recipe.id === id);
+
+    if (recipeIndex !== -1) {
+        recipes.splice(recipeIndex, 1);
+
+        fs.writeFile('./data/recipes.json', JSON.stringify(recipes), (err) => {
+            if (err) {
+                res.status(500).json({error: 'Error writing to file'});
+            } else {
+                res.status(200).json({ success: true });
+            }
+        });
+    } else {
+        res.status(404).json({error: 'Recipe not found'});
+    }
+}

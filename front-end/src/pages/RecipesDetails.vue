@@ -23,7 +23,6 @@
 
 <script>
 
-import Layout from "src/layouts/MainLayout.vue";
 import MainLayout from "layouts/MainLayout.vue";
 export default {
   name: 'RecipeDetails',

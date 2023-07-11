@@ -1,6 +1,8 @@
 const express = require('express');
 const recipes = require("./data/recipes.json");
 const ingredients = require('./data/ingredients.json');
+const { v4: uuidv4 } = require('uuid');
+
 const app = express();
 const port = 3000; // Le port sur lequel votre serveur écoutera les requêtes
 
@@ -47,19 +49,18 @@ app.get('/api/ingredients/:id', (req, res) => {
 });
 
 // Exemple de route pour ajouter des données
-app.post('/api/data', (req, res) => {
-    const newData = req.body;
-
-    const jsonData = require('./data.json');
+app.post('/api/recipes', (req, res) => {
+    const newRecipe = req.body;
+    newRecipe.id = uuidv4();
 
     // Ajouter les nouvelles données à votre structure JSON
-    jsonData.push(newData);
+    recipes.push(newRecipe);
 
     // Enregistrer les modifications dans le fichier JSON
     const fs = require('fs');
-    fs.writeFileSync('./data.json', JSON.stringify(jsonData));
+    fs.writeFileSync('./data/recipes.json', JSON.stringify(recipes));
 
-    res.json(newData);
+    res.status(201).json(newRecipe);
 });
 
 // Écoute du serveur sur le port spécifié

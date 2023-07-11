@@ -383,5 +383,43 @@
         "quantity": 30
       }
     ]
+  },
+  {
+    "id": 12,
+    "name": "Chocolate ice cream",
+    "steps": "1. chocolade. 2. cream 3. freeze. 4. eat",
+    "ingredients": [
+      {
+        "id": 2,
+        "quantity": 100
+      },
+      {
+        "id": 37,
+        "quantity": 50
+      },
+      {
+        "id": 35,
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "name": "Chocolate ice cream",
+    "steps": "1. chocolade. 2. cream 3. freeze. 4. eat",
+    "ingredients": [
+      {
+        "id": 2,
+        "quantity": 100
+      },
+      {
+        "id": 37,
+        "quantity": 50
+      },
+      {
+        "id": 35,
+        "quantity": 10
+      }
+    ],
+    "id": "fa3a7500-4997-4347-af7b-a047693505d9"
   }
 ]

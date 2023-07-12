@@ -13,7 +13,11 @@ exports.getRecipe = (req, res) => {
     const recipe = recipes.find((recipe) => recipe.id === id);
 
     if (recipe) {
-        res.status(200).json(recipe);
+        for (i = 0; i < recipe.ingredients.length; i++) {
+            let id_ingredient = recipe.ingredients[i].id
+            recipe.ingredients[i].name = ingredients.find((ingredient) => ingredient.id === id_ingredient).name;
+        }
+            res.status(200).json(recipe);
     } else {
         res.status(404).json({error: "Recipe not found"});
     }

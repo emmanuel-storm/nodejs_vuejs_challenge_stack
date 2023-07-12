@@ -30,16 +30,25 @@
         ]"
           />
 
-          <q-select
-            filled
-            v-model="ingredients"
-            multiple
-            :options="[
-      'Chicken', 'Tomato', 'Oil', 'Onion', 'Fish'
-    ]"
-            label="Your ingredients"
-            style="width: 250px"
-          />
+          <div class="add-an-ingredient" style="display: flex; flex-direction: row; gap: 1.5rem">
+            <q-select
+              filled
+              v-model="test"
+              multiple
+              :options="nameOptions"
+              label="Your ingredients"
+              style="width: 250px"
+              hide-selected
+            />
+            <q-input
+              filled
+              v-model="quantity"
+              type="number"
+              label="Quantity"
+            ></q-input>
+          </div>
+
+          <q-btn @click="addIngredient" label="Add Another Ingredient" />
 
           <div>
             <q-btn label="Submit" type="submit" color="primary"/>
@@ -53,6 +62,8 @@
 
 <script>
 import Layout from "src/layouts/MainLayout.vue";
+import {onMounted, ref} from "vue";
+import {useIngredientsStore} from "stores/ingredientsStore";
 
 export default {
   name: "RecipeForm",
@@ -61,22 +72,43 @@ export default {
   },
 
   methods: {
+    addIngredient() {
+      this.ingredientList.push({ name: null, quantity: null });
+    },
+
     submitForm() {
       // Soumettre le formulaire et traiter les données ici
-      console.log(this.form.name);
+
     }
   },
 
-  data() {
-    const options = [
-      'Chicken', 'Tomato', 'Oil', 'Onion', 'Fish'
-    ]
+  setup() {
+    onMounted(async () => {
+      const ingredientsStore = useIngredientsStore()
+      await ingredientsStore.fetchIngredients();
+    });
+
+    const newRecipe = ref({
+      name: "",
+      steps: "",
+      ingredients: [],
+    });
+
+    const ingredientsStore = useIngredientsStore()
+
+    const nameOptions = []
+
+    ingredientsStore.ingredients.forEach((ingredient) => nameOptions.push(ingredient.name))
+
+    console.log(nameOptions)
 
     return {
+      ingredients: ingredientsStore.ingredients,
+      nameOptions,
       form: {
         name: '',
         steps: '',
-        options,
+        nameOptions,
       }
     };
   },

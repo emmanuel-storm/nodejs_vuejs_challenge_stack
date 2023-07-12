@@ -6,13 +6,12 @@
         <q-card class="my-card" style="display: flex; flex-direction: column; gap: 2rem">
           <q-img src="https://assets.afcdn.com/recipe/20211214/125831_w1024h768c1cx866cy866.jpg" height="60em">
             <div class="text-h5 absolute-bottom">
-              Ceci est le nom d'une recette
+              {{ name }}
             </div>
           </q-img>
           <q-card-section class="q-pt-none">
             <p style="font-size: 1rem">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {{ steps }}
             </p>
           </q-card-section>
         </q-card>
@@ -24,22 +23,32 @@
 <script>
 
 import MainLayout from "layouts/MainLayout.vue";
+import {useRecipeStore} from "stores/recipesStore";
+import {onMounted} from "vue";
 export default {
   name: 'RecipeDetails',
   components: {MainLayout},
   props: {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
-  created() {
-    // Récupérer les données de la recette en utilisant l'ID
-    // Exemple : appeler une méthode ou une API pour récupérer les détails de la recette
-  },
 
   setup() {
+    onMounted(async () => {
+      const store = useRecipeStore()
+      await store.fetchRecipes();
+    });
 
-  }
+    const store = useRecipeStore();
+
+    console.log(store.recipes)
+
+    return {
+      name: store.recipes.name,
+      steps: store.recipes.steps,
+    };
+  },
 };
 </script>

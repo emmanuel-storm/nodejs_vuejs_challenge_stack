@@ -5,12 +5,12 @@
         <q-card class="my-card" style="display: flex; flex-direction: column; gap: 2rem">
           <q-img src="https://assets.afcdn.com/recipe/20211214/125831_w1024h768c1cx866cy866.jpg" height="60em">
             <div class="text-h5 absolute-bottom">
-              {{ name }}
+              {{ recipe?.name }}
             </div>
           </q-img>
           <q-card-section class="q-pt-none">
             <p style="font-size: 1rem">
-              {{ steps }}
+              {{ recipe?.steps }}
             </p>
           </q-card-section>
         </q-card>
@@ -23,7 +23,8 @@
 
 import MainLayout from "layouts/MainLayout.vue";
 import {useRecipeStore} from "stores/recipesStore";
-import {onMounted} from "vue";
+import {computed, onMounted, ref} from "vue";
+import {useRoute} from "vue-router";
 export default {
   name: 'RecipeDetails',
   components: {MainLayout},
@@ -35,18 +36,21 @@ export default {
   },
 
   setup() {
+    const route = useRoute()
+    const recipe = ref(null);
+
     onMounted(async () => {
       const recipesStore = useRecipeStore()
       await recipesStore.fetchRecipes();
+      const routeId = computed(() => route.params.id);
+
+      await recipesStore.fetchOneRecipe(routeId.value);
+      recipe.value = recipesStore.recipes.find((r) => r.id === routeId.value);
     });
-
-    const recipesStore = useRecipeStore();
-
-    console.log(recipesStore.recipes)
+    console.log(recipe)
 
     return {
-      name: recipesStore.recipes.name,
-      steps: recipesStore.recipes.steps,
+      recipe,
     };
   },
 };

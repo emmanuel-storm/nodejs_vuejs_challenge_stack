@@ -160,7 +160,6 @@ export default {
 
     function openRecipeDetails(id) {
       const store = useRecipeStore();
-      console.log("id in recipeCard",id)
       store
         .fetchOneRecipe(id)
         .then(() => {

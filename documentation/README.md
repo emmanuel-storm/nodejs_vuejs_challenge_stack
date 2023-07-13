@@ -130,8 +130,11 @@ La liste des endpoints publics :
   ```JSON
   2549
   ```
+  
+Pour tester les endpoints d'API, il est possible d'importer le fichier Challenge_Nodejs.postman_collection.json sur Postman pour recréer la collection que nous avons créée.
 
 ## Installation en local
+
 - Clonez le projet
 - Dans les dossiers /back-end et /front-end : npm install ou yarn install puis dans /back-end : npm run start et dans /front-end : quasar dev
 
@@ -166,6 +169,7 @@ Pour visualiser les erreurs en cas de bug, regarder la console du navigateur.
 
 Dans le cadre de l'évolution du projet, nous pensions à ajouter plusieurs choses :
 
+- pouvoir ajouter des ingrédients lors de la création des recettes
 - une gestion des ingrédients depuis l'application (formulaire de création, de modification, bouton de suppression)
 - une base de données.
 - une table utilisateur et la sécurisation des requêtes via token (JWT par exemple)

@@ -18,7 +18,7 @@
     <q-separator />
 
     <q-card-actions align="left">
-      <q-btn flat @click="dialog = true">Edit</q-btn>
+      <q-btn flat @click="editRecipe">Edit</q-btn>
       <q-btn outline style="color: red" @click="deleteRecipe(recipeId)">Delete</q-btn>
     </q-card-actions>
   </q-card>
@@ -54,24 +54,26 @@
           >
             <q-input
               filled
-              v-model="updateRecipe.name"
+              v-model="updateRecipeRef.name"
               label="update the name"
               hint="Name and surname"
               lazy-rules
+              :value="editingRecipe ? editingRecipe.name : ''"
             />
 
             <q-input
               filled
               type="textarea"
-              v-model="updateRecipe.steps"
+              v-model="updateRecipeRef.steps"
               label="Update instruction"
               lazy-rules
+              :value="editingRecipe ? editingRecipe.steps : ''"
             />
 
             <div class="add-an-ingredient" style="display: flex; flex-direction: row; gap: 1.5rem">
               <q-select
                 filled
-                v-model="updateRecipe.ingredients"
+                v-model="updateRecipeRef.ingredients"
                 multiple
                 :options="[]"
                 label="Your ingredients"
@@ -86,8 +88,8 @@
             </div>
 
             <div>
-              <q-btn label="Submit" type="submit" color="purple"/>
-              <q-btn label="Reset" type="reset" color="purple" flat class="q-ml-sm" />
+              <q-btn label="Submit" type="submit" style="background-color: #4F268E; color: white"/>
+              <q-btn label="Reset" type="reset" style="color: #4F268E;" flat class="q-ml-sm" />
             </div>
           </q-form>
         </div>
@@ -132,8 +134,12 @@ export default {
     const router = useRouter();
 
     const store = useRecipeStore()
+    const editingRecipe = ref(null);
+    const dialog = ref(false);
+    const maximizedToggle = ref(false);
 
-    const updateRecipe = ref({
+    const updateRecipeRef = ref({
+      id: props.recipeId,
       name: props.name,
       steps: props.steps,
       ingredients: [],
@@ -142,25 +148,35 @@ export default {
     function submitUpdate() {
       store.updateRecipe({
         id: props.recipeId,
-        name: updateRecipe.value.name,
-        steps: updateRecipe.value.steps,
-        ingredients: updateRecipe.value.ingredients,
+        name: updateRecipeRef.value.name,
+        steps: updateRecipeRef.value.steps,
+        ingredients: updateRecipeRef.value.ingredients,
       });
 
-      // Réinitialiser les valeurs du formulaire après la soumission
-      updateRecipe.value = {
+      updateRecipeRef.value = {
+        id: props.recipeId,
         name: props.name,
         steps: props.steps,
         ingredients: [],
       };
 
-      // Fermer la boîte de dialogue
       dialog.value = false;
+    }
+
+    function editRecipe() {
+      editingRecipe.value = {
+        name: props.name,
+        steps: props.steps,
+        ingredients: [], // Ajoutez ici les autres propriétés de la recette si nécessaire
+      };
+      dialog.value = true;
     }
 
     function openRecipeDetails(id) {
       const store = useRecipeStore();
-      console.log("id in recipeCard",id)
+      const recipe = store.recipes.find((r) => r.id === id);
+      editingRecipe.value = { ...recipe };
+
       store
         .fetchOneRecipe(id)
         .then(() => {
@@ -171,25 +187,31 @@ export default {
         });
     }
 
+    console.log({editingRecipe})
+
     return {
+      editRecipe,
+      editingRecipe,
       openRecipeDetails,
       submitUpdate,
       deleteRecipe(recipeId) {
         store.deleteRecipe(recipeId)
       },
 
+      updateRecipeRef,
+
       updateRecipe(updateRecipe) {
         this.dialog = true;
         store.updateRecipe({
-          id: this.recipeId, // Assurez-vous de passer l'ID de la recette pour la mise à jour
+          id: this.recipeId,
           name: updateRecipe.name,
           steps: updateRecipe.steps,
           ingredients: updateRecipe.ingredients,
         });
       },
 
-      dialog: ref(false),
-      maximizedToggle: ref(true)
+      dialog,
+      maximizedToggle
     }
 
   },

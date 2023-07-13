@@ -1,6 +1,6 @@
 <template>
   <layout>
-    <div style="padding: 2rem; max-height: 100vh; overflow: scroll">
+    <div style="padding: 2rem; max-height: 100vh; overflow-y: scroll">
       <q-card style="padding: 1rem">
         <h1 class="text-h4" style="font-weight: bold; color: #4F268E">List of recipes</h1>
         <div style="display: grid;
@@ -13,6 +13,7 @@
               :name="recipe.name"
               date="29 Juil. 2023"
               :recipeId="recipe.id"
+              :steps="recipe.steps"
             />
           </div>
         </div>

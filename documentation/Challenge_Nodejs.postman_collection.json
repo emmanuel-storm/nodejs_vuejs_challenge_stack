@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "148223ea-35ea-4e36-ab74-4820499d0d54",
+		"name": "Challenge Nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18964400"
+	},
+	"item": [
+		{
+			"name": "Get all ingredients",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/ingredients/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ingredients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one ingredient",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/ingredients/273c27e1-613b-4db7-99a9-29f082c829f1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ingredients",
+						"273c27e1-613b-4db7-99a9-29f082c829f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all recipes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one recipe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes/273c27e1-613b-4db7-99a9-29f082c829f1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						"273c27e1-613b-4db7-99a9-29f082c829f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get analyse",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes/273c27e1-613b-4db7-99a9-29f082c829f1/analyse",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						"273c27e1-613b-4db7-99a9-29f082c829f1",
+						"analyse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream 2\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": \"7e3b2d0d-6073-4e8e-876a-248c437b0802\",\r\n        \"quantity\": 100\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify recipe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"f4506d8b-2369-4074-9df8-0fcb5137a736\",\r\n    \"name\": \"Chocolate ice cream 4\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n        {\r\n            \"id\": \"7e3b2d0d-6073-4e8e-876a-248c437b0802\",\r\n            \"quantity\": 100\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes/8c3e62b0-2fc3-441c-9ad4-41d866496276",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						"8c3e62b0-2fc3-441c-9ad4-41d866496276"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete recipe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Chocolate ice cream\",\r\n    \"steps\": \"1. chocolade. 2. cream 3. freeze. 4. eat\",\r\n    \"ingredients\": [\r\n      {\r\n        \"id\": 2,\r\n        \"quantity\": 100\r\n      },\r\n      {\r\n        \"id\": 37,\r\n        \"quantity\": 50\r\n      },\r\n      {\r\n        \"id\": 35,\r\n        \"quantity\": 10\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/recipes/74bb6c0a-071c-4ccd-bfc2-5a8c5668d41c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"recipes",
+						"74bb6c0a-071c-4ccd-bfc2-5a8c5668d41c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

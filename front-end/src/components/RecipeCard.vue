@@ -18,7 +18,7 @@
 
     <q-card-actions align="left">
       <q-btn flat @click="console.log('bonjour')">Edit</q-btn>
-      <q-btn outline style="color: red">Delete</q-btn>
+      <q-btn outline style="color: red" @click="deleteRecipe(recipeId)">Delete</q-btn>
     </q-card-actions>
   </q-card>
 
@@ -54,6 +54,7 @@ export default {
 
   setup() {
     const router = useRouter();
+    const store = useRecipeStore()
     function openRecipeDetails(id) {
       const store = useRecipeStore();
       console.log({ id });
@@ -70,6 +71,9 @@ export default {
 
     return {
       openRecipeDetails,
+      deleteRecipe(recipeId) {
+        store.deleteRecipe(recipeId)
+      },
     }
 
   },

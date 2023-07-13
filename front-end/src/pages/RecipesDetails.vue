@@ -1,7 +1,6 @@
 <template>
   <main-layout>
-    <div class="text-h4"></div>
-    <div style="padding: 2rem">
+    <div style="padding: 2rem; max-height: 100vh; overflow-x: scroll">
       <q-card style="padding: 1rem">
         <q-card class="my-card" style="display: flex; flex-direction: column; gap: 2rem">
           <q-img src="https://assets.afcdn.com/recipe/20211214/125831_w1024h768c1cx866cy866.jpg" height="60em">
@@ -37,17 +36,17 @@ export default {
 
   setup() {
     onMounted(async () => {
-      const store = useRecipeStore()
-      await store.fetchRecipes();
+      const recipesStore = useRecipeStore()
+      await recipesStore.fetchRecipes();
     });
 
-    const store = useRecipeStore();
+    const recipesStore = useRecipeStore();
 
-    console.log(store.recipes)
+    console.log(recipesStore.recipes)
 
     return {
-      name: store.recipes.name,
-      steps: store.recipes.steps,
+      name: recipesStore.recipes.name,
+      steps: recipesStore.recipes.steps,
     };
   },
 };

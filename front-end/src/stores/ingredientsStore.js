@@ -16,7 +16,17 @@ export const useIngredientsStore = defineStore('ingredients', {
         this.ingredients = res.data
       }
       catch (err) {
-        console.error("Error during the get of the data :", err)
+        console.error("Error during the get of ingredients :", err)
+      }
+    },
+
+    async fetchOneIngredient(ingredientId){
+      try {
+        const res = await axios.get(`${API_BASE_URL}/ingredients/${ingredientId}`)
+        this.ingredients = res.data
+      }
+      catch (err) {
+        console.error("Error during the get of an ingredient :", err)
       }
     },
   }

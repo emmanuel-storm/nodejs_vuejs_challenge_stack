@@ -1,6 +1,6 @@
 <template>
   <layout>
-    <div style="padding: 2rem">
+    <div style="padding: 2rem; max-height: 100vh; overflow: scroll">
       <q-card style="padding: 1rem">
         <h1 class="text-h4" style="font-weight: bold; color: #4F268E">List of recipes</h1>
         <div style="display: grid;
@@ -35,8 +35,6 @@ export default {
 
   setup() {
     const store = useRecipeStore()
-
-    console.log("test", store.recipes)
 
     return {
       recipes: store.recipes,

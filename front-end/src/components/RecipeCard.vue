@@ -6,9 +6,8 @@
     color: #4F268E;
     cursor: pointer;
 "
-    @click="openRecipeDetails(recipeId)"
   >
-    <q-card-section class="text-white" style="background-color: #4F268E">
+    <q-card-section class="text-white" style="background-color: #4F268E" @click="openRecipeDetails(recipeId)">
       <div>
         <div class="text-h6">{{ name }}</div>
         <div class="text-subtitle2">Published on: {{ date }} </div>
@@ -18,8 +17,8 @@
     <q-separator />
 
     <q-card-actions align="left">
-      <q-btn flat>Edit</q-btn>
-      <q-btn flat style="background-color: #4F268E; color: white">Delete</q-btn>
+      <q-btn flat @click="console.log('bonjour')">Edit</q-btn>
+      <q-btn outline style="color: red">Delete</q-btn>
     </q-card-actions>
   </q-card>
 

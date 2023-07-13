@@ -1,7 +1,10 @@
 ## Description du projet et fonctionnalités implémentées
-Notre application de calcul de calories pour des recettes permet à n'importe qui de calculer simplement le nombre total de calories dans une recette.
-Pour ce faire, il est possible de retranscrire sa recette dans l'application en lui donnant un nom, toutes les étapes de la recette dans un champ texte et une liste d'ingédients associés à la quantité de ceux-ci dans la recette.
-Il est possible de supprimer ou bien modifier une recette depuis notre application.
+Notre application permet à n'importe qui de calculer simplement le nombre total de calories dans une recette.
+
+Pour ce faire, il est possible de retranscrire sa recette dans l'application en lui donnant un nom, des étapes et une liste d'ingédients et leur quantité.
+
+On compte trois pages : une page d'accueil qui affiche la liste complète des recettes, une page de détail de chaque recette ainsi qu'un formulaire de création.
+Sur la page d'accueil, il est possible de supprimer ou bien de modifier une recette.
 
 ## Liste des technos et leur version
 

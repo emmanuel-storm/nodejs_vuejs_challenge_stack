@@ -29,22 +29,20 @@
           <div class="add-an-ingredient" style="display: flex; flex-direction: row; gap: 1.5rem">
             <q-select
               filled
-              v-model="newRecipe.ingredients"
-              multiple
+              v-model="ingredientsRef.id"
               :options="nameOptions"
               label="Your ingredients"
               style="width: 250px"
             />
             <q-input
               filled
-              v-model="newRecipe.ingredients"
+              v-model="ingredientsRef.quantity"
               type="number"
               label="Quantity"
             />
           </div>
 
-          <q-btn @click="getSelectedIngredients" label="Get Selected Ingredients" />
-          <q-btn @click="addIngredient" label="Add Another Ingredient" />
+          <q-btn @click="addAnotherIngredient" label="Add Another Ingredient" />
 
           <div>
             <q-btn label="Submit" type="submit" style="background-color: #4F268E; color: white"/>
@@ -70,12 +68,8 @@ export default {
   },
 
   methods: {
-    addIngredient() {
+    addAnotherIngredient() {
       this.ingredientList.push({ name: null, quantity: null });
-    },
-
-    getSelectedIngredients() {
-      const selectedIngredients = this.newRecipe.ingredients;
     },
 
     showNotification() {
@@ -104,11 +98,18 @@ export default {
     const ingredientsStore = useIngredientsStore()
     const recipesStore = useRecipeStore()
 
+    const ingredientsRef = Object({
+      id: "",
+      quantity: Number,
+    })
+
     const newRecipe = ref({
       name: "",
       steps: "",
-      ingredients: [],
+      ingredients: [ingredientsRef],
     });
+
+    console.log(ingredientsStore.ingredients)
 
     const nameOptions = []
 
@@ -118,6 +119,7 @@ export default {
       ingredients: ingredientsStore.ingredients,
       nameOptions,
       newRecipe,
+      ingredientsRef,
       createRecipe(event) {
         event.preventDefault()
         recipesStore.createRecipe({

@@ -13,6 +13,7 @@
               :name="recipe.name"
               date="29 Juil. 2023"
               :recipeId="recipe.id"
+              :steps="recipe.steps"
             />
           </div>
         </div>

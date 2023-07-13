@@ -20,13 +20,16 @@ export const useRecipeStore = defineStore('recipes', {
       }
     },
 
-    async fetchOneRecipe(recipeId){
+    async fetchOneRecipe(recipeId) {
       try {
-        const res = await axios.get(`${API_BASE_URL}/recipes/${recipeId}`)
-        this.recipes = res.data
-      }
-      catch (err) {
-        console.log("Error detected during the get of this recipe :", err)
+        const response = await axios.get(`${API_BASE_URL}/recipes/${recipeId}`);
+        const updatedRecipe = response.data;
+        const index = this.recipes.findIndex((recipe) => recipe.id === updatedRecipe.id);
+        if (index !== -1) {
+          this.recipes.splice(index, 1, updatedRecipe);
+        }
+      } catch (error) {
+        console.log("Error detected during the get of this recipe:", error);
       }
     },
 

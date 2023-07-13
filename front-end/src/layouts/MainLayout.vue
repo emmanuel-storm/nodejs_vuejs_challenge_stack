@@ -34,15 +34,16 @@ export default {
 .layout {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 .navbar {
-  width: 80px;
+  width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  margin-right: 10px; /* Ajout d'une marge de 10px à droite de la navbar */
+  padding-top: 2rem;
+  margin-right: 1rem; /* Ajout d'une marge de 10px à droite de la navbar */
 }
 
 .navbar-toggle {

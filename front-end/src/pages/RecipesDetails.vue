@@ -71,7 +71,6 @@ export default {
 
       if (recipe.value && recipe.value.ingredients) {
         ingredientsList.value = recipe.value.ingredients;
-        console.log("in onMounted", ingredientsList.value)
       } else {
         console.log('No ingredients found');
       }
@@ -83,7 +82,6 @@ export default {
       recipe,
       ingredients: recipesStore.recipes.ingredients,
       ingredientsList,
-      //ingredients: recipe.value?.ingredients || [],
     };
   },
 };

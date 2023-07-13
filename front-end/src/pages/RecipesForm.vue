@@ -53,7 +53,6 @@
         </q-form>
       </q-card>
     </div>
-    <q-btn color="purple" @click="showNotification" label="Show Notification" />
   </layout>
 </template>
 

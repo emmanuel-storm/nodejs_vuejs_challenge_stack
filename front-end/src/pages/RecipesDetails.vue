@@ -30,6 +30,14 @@
             <p style="font-size: 1rem">
               {{ recipe?.steps }}
             </p>
+
+            <div class="text-h5" style="font-weight: bold">
+              <p>Total des calories</p>
+            </div>
+
+            <q-chip color="purple" text-color="white" style="margin-bottom: 2rem">
+              {{ calorie }} cal
+            </q-chip>
           </q-card-section>
         </q-card>
       </q-card>
@@ -43,6 +51,7 @@ import MainLayout from "layouts/MainLayout.vue";
 import {useRecipeStore} from "stores/recipesStore";
 import {computed, onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
+import {useCalorieStore} from "stores/caloriesStore";
 
 export default {
   name: 'RecipeDetails',
@@ -61,10 +70,15 @@ export default {
 
     onMounted(async () => {
       const recipesStore = useRecipeStore()
-      await recipesStore.fetchRecipes();
       const routeId = computed(() => route.params.id);
+      const calorieStore = useCalorieStore()
 
+      await recipesStore.fetchRecipes();
       await recipesStore.fetchOneRecipe(routeId.value);
+      await calorieStore.fetchCaloriesOfRecipe(routeId.value)
+
+      console.log(calorieStore.calorie)
+
       recipe.value = recipesStore.recipes.find((r) => r.id === routeId.value);
 
       ingredientsList.value = recipe.value?.ingredients || []
@@ -77,11 +91,13 @@ export default {
     });
 
     const recipesStore = useRecipeStore()
+    const caloriesStore = useCalorieStore()
 
     return {
       recipe,
       ingredients: recipesStore.recipes.ingredients,
       ingredientsList,
+      calorie: caloriesStore.calorie,
     };
   },
 };

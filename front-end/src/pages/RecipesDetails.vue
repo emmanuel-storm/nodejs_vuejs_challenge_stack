@@ -42,8 +42,6 @@ export default {
 
     const recipesStore = useRecipeStore();
 
-    console.log(recipesStore.recipes)
-
     return {
       name: recipesStore.recipes.name,
       steps: recipesStore.recipes.steps,

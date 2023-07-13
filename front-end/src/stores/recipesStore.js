@@ -60,7 +60,7 @@ export const useRecipeStore = defineStore('recipes', {
           this.recipes.splice(index, 1);
         }
       } catch (error) {
-        console.error('Eerror when trying to delete the recipe :', error);
+        console.error('Error when trying to delete the recipe :', error);
       }
     },
   }

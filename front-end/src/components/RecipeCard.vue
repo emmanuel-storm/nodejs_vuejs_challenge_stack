@@ -61,7 +61,6 @@ export default {
       store
         .fetchOneRecipe(id)
         .then(() => {
-          // Utilisez la méthode push de l'instance de Vue Router
           router.push(`/recipe/${id}`);
         })
         .catch((error) => {

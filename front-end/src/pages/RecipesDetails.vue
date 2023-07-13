@@ -77,8 +77,6 @@ export default {
       await recipesStore.fetchOneRecipe(routeId.value);
       await calorieStore.fetchCaloriesOfRecipe(routeId.value)
 
-      console.log(calorieStore.calorie)
-
       recipe.value = recipesStore.recipes.find((r) => r.id === routeId.value);
 
       ingredientsList.value = recipe.value?.ingredients || []

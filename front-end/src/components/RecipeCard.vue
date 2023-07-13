@@ -187,8 +187,6 @@ export default {
         });
     }
 
-    console.log({editingRecipe})
-
     return {
       editRecipe,
       editingRecipe,

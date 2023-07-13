@@ -109,8 +109,6 @@ export default {
       ingredients: [ingredientsRef],
     });
 
-    console.log(ingredientsStore.ingredients)
-
     const nameOptions = []
 
     ingredientsStore.ingredients.forEach((ingredient) => nameOptions.push(ingredient.name))
